@@ -1,0 +1,25 @@
+{
+  "certificates": [
+    {
+      "Id": 1,
+      "Name": "Gift Certificate 1",
+      "Description": "Description for Certificate 1",
+      "Price": 100,
+      "Summa": 80
+    },
+    {
+      "Id": 2,
+      "Name": "Gift Certificate 2",
+      "Description": "Description for Certificate 2",
+      "Price": 150,
+      "Summa": 120
+    },
+    {
+      "Id": 3,
+      "Name": "Gift Certificate 3",
+      "Description": "Description for Certificate 3",
+      "Price": 200,
+      "Summa": 160
+    }
+  ]
+}

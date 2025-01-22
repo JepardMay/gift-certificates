@@ -1,0 +1,116 @@
+.ContactForm {
+  display: flex;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+.ContactForm-cert {
+  flex-shrink: 0;
+  max-width: 240px;
+  margin-right: 25px;
+  pointer-events: none;
+}
+
+.ContactForm-body {
+  flex-shrink: 0;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.ContactForm-input {
+  margin-bottom: 20px;
+}
+
+.ContactForm-input.error input,
+.ContactForm-input.error textarea {
+  border-color: var(--error-color);
+}
+
+.ContactForm-input .error-message {
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--error-color);
+}
+
+.ContactForm-input:last-child {
+  margin-bottom: 0;
+}
+
+.ContactForm-input label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: 700;
+} 
+
+.ContactForm-input input,
+.ContactForm-input textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  transition: border-color var(--default-transition);
+}
+
+.ContactForm-input textarea {
+  height: 100px;
+  resize: none;
+}
+
+.ContactForm-input input:hover,
+.ContactForm-input input:focus,
+.ContactForm-input input:focus-visible,
+.ContactForm-input textarea:hover,
+.ContactForm-input textarea:focus-visible,
+.ContactForm-input textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.ContactForm-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.ContactForm-btn {
+  margin-right: 15px;
+  padding: 15px 35px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ContactForm-btn:nth-child(2n) {
+  margin-right: 0;
+}
+
+.ContactForm-btn:hover,
+.ContactForm-btn:focus {
+  background-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .ContactForm {
+    display: block;
+    width: 100%;
+  }
+
+  .ContactForm-cert {
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  .ContactForm-body {
+    flex-shrink: 0;
+    flex-grow: 1;
+    min-width: unset;
+    width: 100%;
+  }
+}

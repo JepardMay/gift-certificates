@@ -1,0 +1,69 @@
+.Certificate {
+  position: relative;
+  border: 2px solid var(--card-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color var(--default-transition),
+    transform var(--default-transition);
+}
+
+.Certificate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.3;
+  background: repeating-linear-gradient( -45deg, var(--card-color), var(--card-color) 15.5px, var(--background-color) 15.5px, var(--background-color) 77.5px );
+  transition: background var(--default-transition);
+}
+
+.Certificate:hover {
+  --card-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.Certificate.selected {
+  --card-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.Certificate-body {
+  position: relative;
+  z-index: 2;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.Certificate-subtitle {
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: var(--primary-color);
+}
+
+.Certificate-text {
+  margin: 0;
+  font-size: 18px;
+}
+
+.Certificate-card-btn {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--default-transition);
+}
+
+@media (max-width: 768px) {
+  .Certificate {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+
+  .Certificate:last-child {
+    margin-bottom: 0;
+  }
+}
