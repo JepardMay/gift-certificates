@@ -2,6 +2,9 @@
   "name": "gift-certificates",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "axios": "^1.7.9",
     "react": "^19.0.0",
