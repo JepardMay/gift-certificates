@@ -39,7 +39,7 @@ const Certificates = ({ onSelect, setLoading }) => {
     };
 
     fetchCertificates();
-  }, []);
+  }, [setLoading]);
 
   return (
     <div className="Certificates">
