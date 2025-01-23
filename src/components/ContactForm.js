@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import MaskedInput from 'react-text-mask';
+import { IMaskInput } from 'react-imask';
 import PropTypes from 'prop-types';
 import Certificate from './Certificate';
 
@@ -10,19 +10,11 @@ const ContactForm = ({ selectedCert, onBack, onSubmit, setLoading }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: ''
+    email: '',
+    message: ''
   });
 
   const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: '' });
-    }
-  };
 
   const validateForm = () => {
     const newErrors = {};
@@ -56,7 +48,7 @@ const ContactForm = ({ selectedCert, onBack, onSubmit, setLoading }) => {
         PaymentTypeId: 2,
         UseDelivery: 0,
         IsGift: 0,
-        MsgText: '',
+        MsgText: formData.message,
         PName: formData.name,
         PPhone: formData.phone.replace(/\D/g, '')
       }, {
@@ -95,21 +87,27 @@ const ContactForm = ({ selectedCert, onBack, onSubmit, setLoading }) => {
             id="name"
             placeholder="Ваше имя"
             value={formData.name}
-            onChange={handleChange}
+            onChange={(value) => {
+              setFormData({ ...formData, name: value });
+              setErrors({ ...errors, name: '' });
+            }}
             required
           />
           {errors.name && <div className="error-message">{errors.name}</div>}
         </div>
         <div className={`ContactForm-input ${errors.phone ? 'error' : ''}`}>
           <label htmlFor="phone">Телефон *</label>
-          <MaskedInput
-            mask={['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]}
-            value={formData.phone}
+          <IMaskInput
+            mask={'+{7} (000) 000-00-00'}
             type="tel"
             name="phone"
             id="phone"
             placeholder="Ваш телефон"
-            onChange={handleChange}
+            value={formData.phone}
+            onAccept={(value) => {
+              setFormData({ ...formData, phone: value });
+              setErrors({...errors, phone: '' });
+            }}
             required
           />
           {errors.phone && <div className="error-message">{errors.phone}</div>}
@@ -122,14 +120,26 @@ const ContactForm = ({ selectedCert, onBack, onSubmit, setLoading }) => {
             id="email"
             placeholder="Ваша почта"
             value={formData.email}
-            onChange={handleChange}
+            onChange={(value) => {
+              setFormData({ ...formData, email: value });
+              setErrors({...errors, email: '' });
+            }}
             required
           />
           {errors.email && <div className="error-message">{errors.email}</div>}
         </div>
         <div className="ContactForm-input">
           <label htmlFor="message">Сообщение</label>
-          <textarea name="message" id="message" placeholder="Сообщение"></textarea>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="Сообщение"
+            value={formData.message}
+            onChange={(value) => {
+              setFormData({ ...formData, message: value });
+              setErrors({ ...errors, message: '' });
+            }}
+          ></textarea>
         </div>
         <div className="ContactForm-footer">
           <button className="ContactForm-btn" onClick={onBack}>Назад</button>
